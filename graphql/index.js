@@ -1,5 +1,3 @@
-// import express from "express";
-// import cors from "cors";
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { schemas } from "./schema/schema.js";
@@ -63,20 +61,3 @@ startStandaloneServer(server, { listen: { port: PORT } })
   .catch(() => {
     console.log(`Something went Wrong while starting a server `);
   });
-
-// const app = express();
-//
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
-// app.use(cors({ credentials: true, origin: "*" }));
-
-// app.get("/", (_, res) => {
-//   res.json({
-//     success: true,
-//     messgae: "Server is running",
-//   });
-// });
-
-// app.listen(PORT, () => {
-//   console.log(`Server Started on PORT ${PORT}`);
-// });
