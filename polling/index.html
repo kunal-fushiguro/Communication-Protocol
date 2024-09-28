@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Polling</h1>
+  </body>
+  <script>
+    const url = "http://localhost:3000/";
+    // short polling
+    async function shortPolling(params) {
+      const res = fetch(url);
+      const data = res.json();
+      console.log(data);
+    }
+    setInterval(shortPolling, 5000);
+
+    // long polling
+    const makeRequest = async () => {
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        console.log(data);
+        makeRequest();
+      } catch (e) {
+        console.log(e);
+        makeRequest();
+      }
+    };
+    makeRequest();
+  </script>
+</html>
